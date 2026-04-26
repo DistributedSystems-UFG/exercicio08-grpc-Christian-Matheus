@@ -23,6 +23,14 @@ def run():
         response = stub.UpdateEmployeeTitle(EmployeeService_pb2.EmployeeTitleUpdate(id=301, title='Senior Programmer'))
         print ('Updated employee ' + response.status)
 
+        # Query an employee's data by title /adicionado para buscar por title
+        response = stub.GetEmployeeDataFromTitle(EmployeeService_pb2.EmployeeTitle(title='Senior Programmer'))
+        print ('Employee\'s data: ' + str(response))
+
+        # Update an employee's name   /adicionado para atualizar o nome do funcionário     
+        response = stub.UpdateEmployeeName(EmployeeService_pb2.EmployeeNameUpdate(id=301, name='Jose da Silva Ferreira Menor'))
+        print ('Updated employee ' + response.status)
+
         # Delete an employee
         response = stub.DeleteEmployee(EmployeeService_pb2.EmployeeID(id=201))
         print ('Deleted employee ' + response.status)
